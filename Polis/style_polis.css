@@ -11,3 +11,7 @@ h1  {
 path {
     fill: #3E2723;
 }
+
+.country:hover {
+    fill: black;
+}
