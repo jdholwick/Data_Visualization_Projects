@@ -1,0 +1,13 @@
+body {
+    background-color: white;
+}
+h1  {
+    color: #993333;
+    font-size: 2em;
+    text-align: center;
+    text-decoration: underline;
+}
+
+path {
+    fill: #3E2723;
+}

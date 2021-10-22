@@ -4,3 +4,9 @@ h1  {
     text-align: left;
     text-decoration: underline;
 }
+
+ul {
+    color: teal;
+    font-size: 1em;
+    list-style-type: circle;
+}
