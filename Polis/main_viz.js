@@ -15,8 +15,8 @@ d3.csv("data/polis data_distributed 21.08.25.csv", rowConverter, function(data) 
 });
 
 var margin = { top: 75, left: 75, right: 75, bottom: 75},
-    height = 550 - margin.top - margin.bottom,
-    width = 750 - margin.left - margin.right;
+    height = 800 - margin.top - margin.bottom,
+    width = 1400 - margin.left - margin.right;
 
 var svg = d3.select("#map")
     .append("svg")
@@ -34,7 +34,7 @@ d3.queue()
 var projection = d3.geoMercator()
     .center([ 29, 41 ]) // Roughly puts the mediterranean area we need in the center
     .translate([width/2, height/2])
-    .scale(900) // essentially creates the level of zoom on our map we'll see
+    .scale(1900) // essentially creates the level of zoom on our map we'll see
 
 var mapPath = d3.geoPath()
     .projection(projection)
@@ -66,7 +66,7 @@ function ready (error, data, city) {
     svg.selectAll(".city-marks")
         .data(city)
         .enter().append("circle")
-        .attr("r", 1.65)
+        .attr("r", 2.65)
         .attr("fill", "#F44336")//"#34495E")
 
         // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
