@@ -1,5 +1,4 @@
 var cityData; // Global variable which will hold our city names and other important fields.
-var coords;
 
 var rowConverter = function(d) {
     return {
@@ -12,7 +11,7 @@ var rowConverter = function(d) {
 
 d3.csv("data/polis data_distributed 21.08.25.csv", rowConverter, function(data) {
     cityData = data;
-    console.log(cityData);
+    //console.log(cityData);
 });
 
 var margin = { top: 75, left: 75, right: 75, bottom: 75},
@@ -59,31 +58,38 @@ function ready (error, data, city) {
 //            .text("country name");
 
 
+    // Zooming is not working, though the console does show a 'zoom' variable to go way up as I use mousewheel.
+/*    svg.call(d3.zoom().on("zoom", () => {
+        console.log("zoom");
+    }))
+*/
     svg.selectAll(".city-marks")
         .data(city)
         .enter().append("circle")
         .attr("r", 1.65)
         .attr("fill", "#F44336")//"#34495E")
 
-
         // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
-        .attr("cx", function(d) {
+        .attr("cx", function (d) {
             // notice we must feed in both 'long' and 'lat' to get 'x' coord
-            coords = projection([d.Longitude, d.Latitude]) // 'long' and 'lat' are the columns from our '1955-2019_hail.csv' file
+            var coords = projection([d.Longitude, d.Latitude])
             return coords[0]; // returns 'x' only
         })
-        .attr("cy", function(d) {
-            coords = projection([d.Longitude, d.Latitude]) // 'long' and 'lat' are the columns from our '1955-2019_hail.csv' file
+        .attr("cy", function (d) {
+            var coords = projection([d.Longitude, d.Latitude])
             return coords[1]; // returns 'y' only
         })
 
         .attr("opacity", "0.85") // makes each dot slightly opaque
 
         .append("title")
-        .text(cityData[54].Name); // For demo it currently grabs a city arbitrarily at index 54.
+
+        //
+        .text((d) => d.Name)
 
     svg.selectAll(".city-name")
         .data(city)
         .enter().append("text")
         .attr("class", "city-name")
+
 }
