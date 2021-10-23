@@ -84,7 +84,7 @@ function ready (error, data, city) {
 
         .append("title")
 
-        //
+        // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
         .text((d) => d.Name)
 
     svg.selectAll(".city-name")
