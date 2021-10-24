@@ -1,5 +1,5 @@
 body {
-    background-color: white;
+    background-color: #FFFDE7;
 }
 h1  {
     color: #993333;
@@ -13,5 +13,5 @@ path {
 }
 
 path:hover {
-    fill: black;
+    fill: #17202A;
 }
