@@ -58,7 +58,7 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
             .attr("cy", function(d) {
                 return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
             })
-            .attr("r", 1.65)
+            .attr("r", 5.65)
             .style("fill", "#F44336")
             .attr("opacity", "0.85") // makes each dot slightly opaque
             .append("title")
