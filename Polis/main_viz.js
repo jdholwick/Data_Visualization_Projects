@@ -4,7 +4,7 @@ var margin = { top: 75, left: 75, right: 75, bottom: 75},
 
 // Whenever there are shapes on a map we want to use 'geoMercator' (generally) and 'geoPath' apparently
 var projection = d3.geoMercator()
-    .center([30, 40 ]) // Roughly puts the mediterranean area we need in the center
+    .center([25, 40 ]) // Roughly puts the mediterranean area we need in the center
     .translate([width/2, height/2])
     .scale(1900); // Essentially creates the level of zoom on our map we'll see
 
