@@ -1,21 +1,3 @@
-// This code was experimental and worked to but is not likely needed.
-/*
-var cityData; // Global variable which will hold our city names and other important fields.
-
-var rowConverter = function(d) {
-    return {
-        Name: d.Name,
-        Latitude: parseFloat(d.Latitude),
-        Longitude: parseFloat(d.Longitude)
-
-    };
-}
-
-d3.csv("data/polis data_distributed 21.08.25.csv", rowConverter, function(data) {
-    cityData = data;
-    //console.log(cityData);
-});
-*/
 var margin = { top: 75, left: 75, right: 75, bottom: 75},
     height = 800 - margin.top - margin.bottom,
     width = 1400 - margin.left - margin.right;
