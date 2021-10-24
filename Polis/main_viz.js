@@ -1,3 +1,5 @@
+// This code was experimental and worked to but is not likely needed.
+/*
 var cityData; // Global variable which will hold our city names and other important fields.
 
 var rowConverter = function(d) {
@@ -13,12 +15,12 @@ d3.csv("data/polis data_distributed 21.08.25.csv", rowConverter, function(data) 
     cityData = data;
     //console.log(cityData);
 });
-
+*/
 var margin = { top: 75, left: 75, right: 75, bottom: 75},
     height = 800 - margin.top - margin.bottom,
     width = 1400 - margin.left - margin.right;
 
-var svg = d3.select("#map")
+var svgMap = d3.select("#map")
     .append("svg")
     .attr("height", height + margin.top + margin.bottom)
     .attr("width", width + margin.left + margin.right)
@@ -45,7 +47,7 @@ function ready (error, data, city) {
     var text_color = "#74FF00"
     var countries = topojson.feature(data, data.objects.countries).features
 
-    svg.selectAll(".country")//.state")
+    svgMap.selectAll(".country")//.state")
         .data(countries)
         .enter().append("path")
         .attr("class", "country")
@@ -59,14 +61,14 @@ function ready (error, data, city) {
 
 
     // Zooming is not working, though the console does show a 'zoom' variable to go way up as I use mousewheel.
-/*    svg.call(d3.zoom().on("zoom", () => {
+/*    svgMap.call(d3.zoom().on("zoom", () => {
         console.log("zoom");
     }))
 */
-    svg.selectAll(".city-marks")
+    svgMap.selectAll(".city-marks")
         .data(city)
         .enter().append("circle")
-        .attr("r", 2.65)
+        .attr("r", 5)//2.65)
         .attr("fill", "#F44336")//"#34495E")
 
         // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
@@ -87,7 +89,7 @@ function ready (error, data, city) {
         // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
         .text((d) => d.Name)
 
-    svg.selectAll(".city-name")
+    svgMap.selectAll(".city-name")
         .data(city)
         .enter().append("text")
         .attr("class", "city-name")
