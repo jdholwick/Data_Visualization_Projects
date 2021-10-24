@@ -6,15 +6,26 @@ var svgMap = d3.select("#map")
     .append("svg")
     .attr("height", height + margin.top + margin.bottom)
     .attr("width", width + margin.left + margin.right)
+    .attr("border", 2)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var borderPath = svgMap.append("rect")
+    // -75 compensates for 75 pixels margins in 'margin'.
+    .attr("x", -75)
+    .attr("y", -75)
+    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width + margin.left + margin.right)
+    .style("stroke", "black")
+    .style("fill", "#AED6F1") // Essentially gives our oceans color.
+    .style("stroke-width", 4);
+
 d3.queue()
-    .defer(d3.json, "data/world-110m.json") // first item here so second in 'function ready()'
+    .defer(d3.json, "data/countries-10m.json") // first item here so second in 'function ready()'
     .defer(d3.csv, "data/polis data_distributed 21.08.25.csv") // second item here so third in 'function ready()'
     .await(ready)
 
-// whenever there are shapes on a map we want to use 'geoMercator' (generally) and 'geoPath' apparently
+// Whenever there are shapes on a map we want to use 'geoMercator' (generally) and 'geoPath' apparently
 var projection = d3.geoMercator()
     .center([ 29, 41 ]) // Roughly puts the mediterranean area we need in the center
     .translate([width/2, height/2])
@@ -50,7 +61,7 @@ function ready (error, data, city) {
     svgMap.selectAll(".city-marks")
         .data(city)
         .enter().append("circle")
-        .attr("r", 5)//2.65)
+        .attr("r", 1.65)
         .attr("fill", "#F44336")//"#34495E")
 
         // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
@@ -75,5 +86,4 @@ function ready (error, data, city) {
         .data(city)
         .enter().append("text")
         .attr("class", "city-name")
-
 }
