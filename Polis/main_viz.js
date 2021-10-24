@@ -20,6 +20,11 @@ var borderPath = svgMap.append("rect")
     .style("fill", "#AED6F1") // Essentially gives our oceans color.
     .style("stroke-width", 4);
 
+// The following does not work.
+/*Promise.all([
+    d3.json("data/countries-10m.json"), d3.csv("data/polis data_distributed 21.08.25.csv")
+]).then(ready)*/
+
 d3.queue()
     .defer(d3.json, "data/countries-10m.json") // first item here so second in 'function ready()'
     .defer(d3.csv, "data/polis data_distributed 21.08.25.csv") // second item here so third in 'function ready()'
@@ -33,6 +38,38 @@ var projection = d3.geoMercator()
 
 var mapPath = d3.geoPath()
     .projection(projection)
+
+// Adapted from "https://bl.ocks.org/vasturiano/f821fc73f08508a3beeb7014b2e4d50f" but does not work presently
+/*var zoom = d3.zoom()
+    .scaleExtent([1, 8])
+    .on('zoom', zoomed)
+
+svgMap.call(zoom)
+
+d3.json('data/countries-10m.json')
+    .then(world => {
+        g.append('path')
+            .datum({ type: 'Sphere' })
+            .attr('class', 'sphere')
+            .attr('d', mapPath)
+
+        g.append('path')
+            .datum(topojson.merge(world, world.objects.countries.geometries))
+            .attr('class', 'land')
+            .attr('d', mapPath)
+
+        g.append('path')
+            .datum(topojson.mesh(world, world.objects.countries, (a, b) => a !== b))
+            .attr('class', 'boundary')
+            .attr('d', mapPath)
+    })
+
+function zoomed() {
+    svgMap
+        .selectAll('mapPath')
+        .attr('transform', d3.event.transform)
+}
+*/
 
 function ready (error, data, city) {
     //console.log(city)
