@@ -45,6 +45,8 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
 
     // load and display the cities
     d3.csv("data/polis data_distributed 21.08.25.csv").then(function(polisData) {
+        var optionsWalls = ["has walls", "has no walls"]
+
         g.selectAll("city-marks")
             .data(polisData)
             .enter()
@@ -62,7 +64,18 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
             .style("fill", "#F44336")
             .attr("opacity", "0.85") // makes each dot slightly opaque
             .append("title")
-            .text((d) => d.Name); // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
+            .text((d) => d.Name) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
+
+        // The following is not yet functional, doing nothing apparent with an empty drop-down but it does not crash the plot
+        /*g.select("#selectWalls")
+            .selectAll("theOptions")
+            .data(optionsWalls)
+            .enter()
+            .append("option")
+            .text(function (d) { return d; }) // This will be the text shown in the drop-down
+            .attr("value", function (d) { return d; }) // This will be the value returned by selection from drop-down
+        */
+
     });
 });
 
