@@ -68,6 +68,16 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
             .append("title")
             .text((d) => d.Name) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
 
+
+/*            var polisCategories = {}
+
+            for ( var x = 0; x < polisData.columnCount; x++) {
+                polisCategories[x] = polisData.columns[x]
+            }
+
+            console.log(polisCategories)//polisData.columns)
+*/
+//        var dropdownOptions =
         // The following is not yet functional, doing nothing apparent with an empty drop-down but it does not crash the plot
         /*g.select("#selectWalls")
             .selectAll("theOptions")
