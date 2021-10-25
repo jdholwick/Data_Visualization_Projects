@@ -49,6 +49,7 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
     d3.csv("data/polis data_distributed 21.08.25.csv").then(function(polisData) {
         const optionsWalls = ["has walls", "has no walls"]
 
+        console.log(polisData)
         g.selectAll("city-marks")
             .data(polisData)
             .enter()
@@ -68,7 +69,12 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
             .append("title")
             .text((d) => d.Name) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
 
-
+/*        var currentKey
+        d3.select("#selectColorData").on("change", function(d) {
+            currentKey = d3.select(this).property("value");
+            console.log(currentKey)
+        })
+*/
 /*            var polisCategories = {}
 
             for ( var x = 0; x < polisData.columnCount; x++) {
