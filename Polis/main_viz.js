@@ -1,4 +1,4 @@
-const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+const colorScale = d3.scaleOrdinal(d3.schemeSet1);
 
 const margin = { top: 75, left: 75, right: 75, bottom: 75},
      height = 800 - margin.top - margin.bottom,
