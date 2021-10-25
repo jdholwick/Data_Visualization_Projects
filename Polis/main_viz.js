@@ -1,14 +1,16 @@
-var margin = { top: 75, left: 75, right: 75, bottom: 75},
+const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+const margin = { top: 75, left: 75, right: 75, bottom: 75},
      height = 800 - margin.top - margin.bottom,
      width = 1400 - margin.left - margin.right;
 
 // Whenever there are shapes on a map we want to use 'geoMercator' (generally) and 'geoPath' apparently
-var projection = d3.geoMercator()
+const projection = d3.geoMercator()
     .center([25, 40 ]) // Roughly puts the mediterranean area we need in the center
     .translate([width/2, height/2])
     .scale(1900); // Essentially creates the level of zoom on our map we'll see
 
-var svgMap = d3.select("#map")
+const svgMap = d3.select("#map")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -16,7 +18,7 @@ var svgMap = d3.select("#map")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var borderPath = svgMap.append("rect")
+const borderPath = svgMap.append("rect")
     // -75 compensates for 75 pixels margins in 'margin'.
     .attr("x", -75)
     .attr("y", -75)
@@ -26,10 +28,10 @@ var borderPath = svgMap.append("rect")
     .style("fill", "#AED6F1") // Essentially gives our oceans color
     .style("stroke-width", 4);
 
-var mapPath = d3.geoPath()
+const mapPath = d3.geoPath()
     .projection(projection);
 
-var g = svgMap.append("g");
+const g = svgMap.append("g");
 
 // The following will display the Mediterranean part of the world
 d3.json("data/world-50m.json").then(function(worldTopo) {
@@ -38,14 +40,14 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
         .data(topojson.feature(worldTopo, worldTopo.objects.countries)
             .features)
         .enter().append("path")
-        .attr("d", mapPath) // grabs the 'map_path' variable i made and filled with 'geoPath' and then displays our map in the browser
+        .attr("d", mapPath) // grabs the 'map_path' constiable i made and filled with 'geoPath' and then displays our map in the browser
         .attr("fill", "none") // no color so that there is no interference with my '.county' layer
         .attr("stroke", "#186A3B")
         .attr("stroke-width", "1.9");
 
     // load and display the cities
     d3.csv("data/polis data_distributed 21.08.25.csv").then(function(polisData) {
-        var optionsWalls = ["has walls", "has no walls"]
+        const optionsWalls = ["has walls", "has no walls"]
 
         g.selectAll("city-marks")
             .data(polisData)
@@ -61,7 +63,7 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
                 return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
             })
             .attr("r", 5.65)
-            .style("fill", "#F44336")
+            .style("fill", (d) => colorScale(d.Walls))//"#F44336")
             .attr("opacity", "0.85") // makes each dot slightly opaque
             .append("title")
             .text((d) => d.Name) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
@@ -79,7 +81,7 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
     });
 });
 
-var zoom = d3.zoom()
+const zoom = d3.zoom()
     .scaleExtent([1, 8])
     .on('zoom', function(event) {
         g.selectAll('path')
