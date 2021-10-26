@@ -99,7 +99,8 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
 });
 
 const zoom = d3.zoom()
-    .scaleExtent([1, 8])
+    .scaleExtent([.5, 8]) // .5 seems to allow us to zoom out just a bit from the starting zoom, where 1 did not. .5 works best I think.
+    //.translateextent(... // refer to pg. 309 in D3 book and see if this would be helpful in constraining.
     .on('zoom', function(event) {
         g.selectAll('path')
             .attr('transform', event.transform);
