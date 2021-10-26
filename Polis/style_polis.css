@@ -22,6 +22,12 @@ h1  {
     width: 100%;
 }
 
+#selectTest {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
 .selectColorData {
     position: absolute;
     right: 15px;
@@ -29,10 +35,24 @@ h1  {
     z-index: 20000;
 }
 
+#textbox {
+    position: absolute;
+    top: 400px;
+    left: 50px;
+    width: 275px;
+    height: 100px;
+}
+
+#textbox text p {
+    font-family: Arial, Helvetica;
+    font-size: .8em;
+    margin: 0;
+}
+
 path {
-    fill: #3E2723;
+    fill: #FAD7A0;
 }
 
 path:hover {
-    fill: #17202A;
+    fill: #F5B041;
 }

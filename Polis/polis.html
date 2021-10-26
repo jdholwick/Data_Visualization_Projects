@@ -10,11 +10,13 @@
 <body>
 
 <h1>Polis Plot</h1>
+
+<div id="textbox"></div>
 <div class="mapWrapper">
 
     <div id="map"></div>
 
-    <select class="selectColorData">
+<!--    <select class="selectColorData">
         <option value="Walls">Walls (red = walls; blue = no walls)</option>
         <option value="Polisity">Polisity  (color key here or in outside key box)</option>
         <option value="Helenicity">Helenicity (color key here or in outside key box)</option>
@@ -23,11 +25,13 @@
         <option value="Bronze">Intro of Bronze Coinage (color key here or in outside key box)</option>
         <option value="Democracy">Democracy (color key here or in outside key box)</option>
         <option value="Elevation">Elevation (color key here or in outside key box)</option>
-    </select>
+    </select>-->
 
+    <select id="selectTest">
+    </select>
 </div>
 <!-- Version 7 is the latest version of D3. -->
-<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://d3js.org/d3.v6.min.js"></script>
 <!-- I am using this Topojson library though my JSON is a GEOJSON I believe. -->
 <script src="https://unpkg.com/topojson@3"></script>
 <!-- Our visualization data will be in this '.js' file -->

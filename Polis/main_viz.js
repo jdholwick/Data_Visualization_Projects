@@ -73,15 +73,98 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
             .style("fill", (d) => colorScale(d.Walls))//"#F44336")
             .attr("opacity", "0.85") // makes each dot slightly opaque
             .append("title")
-            .text((d) => d.Name) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
+            .text((d) => "City Name: " + d.Name + "\nDemocracy: " + d.Democracy) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
 
-        
-/*        var currentKey
-        d3.select("#selectColorData").on("change", function(d) {
-            currentKey = d3.select(this).property("value");
-            console.log(currentKey)
-        })
+/*
+        //dma.objects.nielsen_dma.geometries = nielsen;
+
+        g.append("g")
+            .attr("id", "polis#")
+            .selectAll("path")
+            .data(topojson.feature(worldTopo, worldTopo.objects.countries))
+            .enter()
+            .append("path")
+            .attr("d", path)
+            //.on("click", clicked)
+
+            .on("mouseover", function(d) {
+                //d3.select(this)
+                //    .attr("fill", "orange")
+
+                //var prop = d.properties;
+
+                var string = "City Name:"// " + d.Name + "</p>";
+                /!*string += "<p><strong>Homes with TVs</strong>: " + numberWithCommas(prop["TV Homes"]) + "</p>";
+                string += "<p><strong>% with Cable</strong>: " + prop.cableperc + "%</p>";
+                string += "<p><strong>Nielsen Rank</strong>: " + prop.Rank + "</p>";
+*!/
+                d3.select("#textbox")
+                    .html("")
+                    .append("text")
+                    .html(string)
+            })
 */
+
+        // add the options to the button
+        var allGroup = ["Name", "Hellenicity", "Walls"]
+
+        d3.select("#selectTest")
+            .selectAll("myOptions")
+            .data(allGroup)
+            .enter()
+            .append("option")
+            .text(function (d) { return d; }) // text showed in the menu
+            .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+        // A function that update the chart
+        function update(selectedGroup) {
+
+            // Create new data with the selection?
+            //var dataFilter = polisData.map(function(d){return {value:d[selectedGroup]} })
+
+            g.selectAll("city-marks")
+                .data(polisData)
+                .enter()
+                .append("a")
+                .append("circle")
+
+                // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
+                .attr("cx", function(d) {
+                    if (d.area_1 >= 2.5){
+                        return projection([d.Longitude, d.Latitude])[0]; // Returns only x coord
+                    }
+                })
+                .attr("cy", function(d) {
+                    if (d.area_1 >= 2.5){
+                        //console.log(d.Latitude) // There is a green dot with no city name that is unaccounted for. It does not seem to be listed in the console data because it would have to be lat 45 or 46 and the four that fit that are cities.
+                        return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
+                    }
+                })
+
+                .attr("r", 3.5)
+                .style("fill", (d) => colorScale(d.Hellenicity))//"#F44336")
+                .attr("opacity", "0.85") // makes each dot slightly opaque
+                .append("title")
+                .text((d) => d.Name) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
+
+            // Create new data with the selection?
+            //var dataFilter = polisData.map(function(d) {return {value:d[selectedGroup]} })
+        }
+
+        // When the button is changed, run the updateChart function
+        d3.select("#selectTest").on("change", function(d) {
+            // recover the option that has been chosen
+            var selectedOption = d3.select(this).property("value")
+            // run the updateChart function with this selected option
+            update(selectedOption)
+        })
+
+        /*        var currentKey
+                d3.select("#selectColorData").on("change", function(d) {
+                    currentKey = d3.select(this).property("value");
+                    console.log(currentKey)
+                })
+        */
 /*            var polisCategories = {}
 
             for ( var x = 0; x < polisData.columnCount; x++) {
