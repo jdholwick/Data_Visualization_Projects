@@ -1,8 +1,8 @@
 const colorScale = d3.scaleOrdinal(d3.schemeSet1);
 
 const margin = { top: 75, left: 75, right: 75, bottom: 75},
-     height = 700 - margin.top - margin.bottom,
-     width = 1300 - margin.left - margin.right;
+     height = 750 - margin.top - margin.bottom,
+     width = 1400 - margin.left - margin.right;
 
 // Whenever there are shapes on a map we want to use 'geoMercator' (generally) and 'geoPath' apparently
 const projection = d3.geoMercator()
