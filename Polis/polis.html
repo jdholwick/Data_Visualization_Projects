@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Polis</title>
     <link href="style_polis.css" rel="stylesheet">
 </head>
-<body>
-<h1>Polis Plot</h1>
 
-<div id="map"></div>
+<body>
 
 <!-- Version 7 is the latest version of D3. -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
-
-<!-- Temporarily, I am using this Topojson library in order to work with the less-massive '.topojson' data files. -->
+<!-- I am using this Topojson library though my JSON is a GEOJSON I believe. -->
 <script src="https://unpkg.com/topojson@3"></script>
 
-<!-- Our visualization data will be in this '.js' file -->
-<script src="main_viz.js"></script>
+<div id="map">
+    <h1>Polis Plot</h1>
 
-<select id="selectColorData">
-    <option value="Walls">Walls (red = walls; blue = no walls)</option>
-    <option value="Other">Other options...</option>
-</select>
+    <!-- Our visualization data will be in this '.js' file -->
+    <script src="main_viz.js"></script>
+
+    <select id="selectColorData">
+        <option value="Walls">Walls (red = walls; blue = no walls)</option>
+        <option value="Polisity">Polisity  (color key here or in outside key box)</option>
+        <option value="Helenicity">Helenicity (color key here or in outside key box)</option>
+        <option value="Staseis">Staseis/Civil War (color key here or in outside key box)</option>
+        <option value="Silver">Intro of Silver Coinage (color key here or in outside key box)</option>
+        <option value="Bronze">Intro of Bronze Coinage (color key here or in outside key box)</option>
+        <option value="Democracy">Democracy (color key here or in outside key box)</option>
+        <option value="Elevation">Elevation (color key here or in outside key box)</option>
+    </select>
+
+</div>
+
 </body>
 </html>
