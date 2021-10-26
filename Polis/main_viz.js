@@ -69,6 +69,7 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
             .append("title")
             .text((d) => d.Name) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
 
+        
 /*        var currentKey
         d3.select("#selectColorData").on("change", function(d) {
             currentKey = d3.select(this).property("value");
