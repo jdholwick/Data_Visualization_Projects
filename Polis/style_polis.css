@@ -1,4 +1,5 @@
-body {
+html, body {
+    height: 100%;
     background-color: #FFFDE7;
 }
 
@@ -7,6 +8,25 @@ h1  {
     font-size: 2em;
     text-align: left;
     text-decoration: underline;
+}
+
+.mapWrapper {
+    position: relative;
+    height: 100%;
+    width: 93%;
+}
+
+#map {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.selectColorData {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 20000;
 }
 
 path {

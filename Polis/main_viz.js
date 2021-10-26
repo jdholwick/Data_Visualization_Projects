@@ -42,14 +42,14 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
         .enter().append("path")
         .attr("d", mapPath) // grabs the 'map_path' constiable i made and filled with 'geoPath' and then displays our map in the browser
         .attr("fill", "none") // no color so that there is no interference with my '.county' layer
-        .attr("stroke", "#186A3B")
+        .attr("stroke", "#566573")
         .attr("stroke-width", "1.9");
 
     // load and display the cities
     d3.csv("data/polis data_distributed 21.08.25.csv").then(function(polisData) {
         const optionsWalls = ["has walls", "has no walls"]
 
-        console.log(polisData)
+        //console.log(polisData)
         g.selectAll("city-marks")
             .data(polisData)
             .enter()
@@ -58,12 +58,18 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
 
             // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
             .attr("cx", function(d) {
-                return projection([d.Longitude, d.Latitude])[0]; // Returns only x coord
+                if (d.area_1 >= 2.5){
+                    return projection([d.Longitude, d.Latitude])[0]; // Returns only x coord
+                }
             })
             .attr("cy", function(d) {
-                return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
+                if (d.area_1 >= 2.5){
+                    //console.log(d.Latitude) // There is a green dot with no city name that is unaccounted for. It does not seem to be listed in the console data because it would have to be lat 45 or 46 and the four that fit that are cities.
+                    return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
+                }
             })
-            .attr("r", 5.65)
+
+            .attr("r", 3.5)
             .style("fill", (d) => colorScale(d.Walls))//"#F44336")
             .attr("opacity", "0.85") // makes each dot slightly opaque
             .append("title")

@@ -1,4 +1,4 @@
-﻿polis#,Name,Polisity,Hellenicity,In/out,staseis,prom 1,prom 2,prom 3,area 1,area 2,Silver,Bronze,Grid,Colonies,Victors,Proxenoi,Democracy,Walls,Delian L,Koinon,Region name,Region #,Latitude,Longitude,Pleiades link,Elevation m,
+﻿polis#,Name,Polisity,Hellenicity,In_out,staseis,prom_1,prom_2,prom_3,area_1,area_2,Silver,Bronze,Grid,Colonies,Victors,Proxenoi,Democracy,Walls,Delian_L,Koinon,Region_name,Region_#,Latitude,Longitude,Pleiades_link,Elevation_m,
 1,Alalie,1,1,1,0,1.12,,,3,,,,,0,0,0,0,1,0,,Spain & France,1,42.10240033,9.511828,https://pleiades.stoa.org/places/472048,41.7,
 2,Emporion,1,2,2,0,2.12,0,0,2,5,6,,,0,0,0,0,1,0,,Spain & France,1,42.13342,3.1145495,https://pleiades.stoa.org/places/246382,0,
 3,Massalia,1,1,2,1,4,0,3,2,40,6,,6,2,0,0,1,1,0,,Spain & France,1,43.296854,5.382499,https://pleiades.stoa.org/places/148127,32.5,
