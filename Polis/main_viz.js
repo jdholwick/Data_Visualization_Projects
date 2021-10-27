@@ -58,12 +58,12 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
 
             // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
             .attr("cx", function(d) {
-                if (d.area_1 >= 2.5){
+                if (d.area_1 >= 3){
                     return projection([d.Longitude, d.Latitude])[0]; // Returns only x coord
                 }
             })
             .attr("cy", function(d) {
-                if (d.area_1 >= 2.5){
+                if (d.area_1 >= 3){
                     //console.log(d.Latitude) // There is a green dot with no city name that is unaccounted for. It does not seem to be listed in the console data because it would have to be lat 45 or 46 and the four that fit that are cities.
                     return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
                 }
@@ -71,7 +71,8 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
 
             .attr("r", 3.5)
             .style("fill", (d) => colorScale(d.Democracy))//"#F44336")
-            .attr("opacity", "0.85") // makes each dot slightly opaque
+            // i commented out opacity for now, because it produces different shades of colors which can be confusing when comparing to the key
+            //.attr("opacity", "0.85") // makes each dot slightly opaque
             .append("title")
             .text((d) => "City Name: " + d.Name + "\nDemocracy: " + d.Democracy + "\nHellenicity: " + d.Hellenicity) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
 
@@ -101,12 +102,12 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
 
                     // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
                     .attr("cx", function (d) {
-                        if (d.area_1 >= 2.5) {
+                        if (d.area_1 >= 3) {
                             return projection([d.Longitude, d.Latitude])[0]; // Returns only x coord
                         }
                     })
                     .attr("cy", function (d) {
-                        if (d.area_1 >= 2.5) {
+                        if (d.area_1 >= 3) {
                             //console.log(d.Latitude) // There is a green dot with no city name that is unaccounted for. It does not seem to be listed in the console data because it would have to be lat 45 or 46 and the four that fit that are cities.
                             return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
                         }
@@ -114,7 +115,8 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
 
                     .attr("r", 3.5)
                     .style("fill", (d) => colorScale(d.Democracy))//"#F44336")
-                    .attr("opacity", "0.85") // makes each dot slightly opaque
+                    // i commented out opacity for now, because it produces different shades of colors which can be confusing when comparing to the key
+                    //.attr("opacity", "0.85") // makes each dot slightly opaque
                     .append("title")
                     .text((d) => "City Name: " + d.Name + "\nDemocracy: " + d.Democracy + "\nHellenicity: " + d.Hellenicity) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
 
@@ -137,12 +139,12 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
 
                     // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
                     .attr("cx", function (d) {
-                        if (d.area_1 >= 2.5) {
+                        if (d.area_1 >= 3) {
                             return projection([d.Longitude, d.Latitude])[0]; // Returns only x coord
                         }
                     })
                     .attr("cy", function (d) {
-                        if (d.area_1 >= 2.5) {
+                        if (d.area_1 >= 3) {
                             //console.log(d.Latitude) // There is a green dot with no city name that is unaccounted for. It does not seem to be listed in the console data because it would have to be lat 45 or 46 and the four that fit that are cities.
                             return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
                         }
@@ -150,7 +152,8 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
 
                     .attr("r", 3.5)
                     .style("fill", (d) => colorScale(d.Hellenicity))//"#F44336")
-                    .attr("opacity", "0.85") // makes each dot slightly opaque
+                    // i commented out opacity for now, because it produces different shades of colors which can be confusing when comparing to the key
+                    //.attr("opacity", "0.85") // makes each dot slightly opaque
                     .append("title")
                     .text((d) => "City Name: " + d.Name + "\nDemocracy: " + d.Democracy + "\nHellenicity: " + d.Hellenicity) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
 
