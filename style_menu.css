@@ -1,12 +1,14 @@
 h1  {
-    color: #993333;
-    font-size: 2em;
+    font-family: "Courier New";
+    color: #283747;
+    font-size: 1.9em;
     text-align: left;
     text-decoration: underline;
 }
 
 ul {
-    color: teal;
-    font-size: 1em;
+    font-family: "Courier New";
+    color: #2C3E50;
+    font-size: 1.2em;
     list-style-type: circle;
 }
