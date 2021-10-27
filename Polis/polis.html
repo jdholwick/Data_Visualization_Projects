@@ -8,33 +8,29 @@
 </head>
 
 <body>
-
-<h1>Polis Plot</h1>
-
-<div id="textbox"></div>
-<div class="mapWrapper">
-
-    <div id="map"></div>
-
-<!--    <select class="selectColorData">
-        <option value="Walls">Walls (red = walls; blue = no walls)</option>
-        <option value="Polisity">Polisity  (color key here or in outside key box)</option>
-        <option value="Helenicity">Helenicity (color key here or in outside key box)</option>
-        <option value="Staseis">Staseis/Civil War (color key here or in outside key box)</option>
-        <option value="Silver">Intro of Silver Coinage (color key here or in outside key box)</option>
-        <option value="Bronze">Intro of Bronze Coinage (color key here or in outside key box)</option>
-        <option value="Democracy">Democracy (color key here or in outside key box)</option>
-        <option value="Elevation">Elevation (color key here or in outside key box)</option>
-    </select>-->
-
-    <select id="selectTest">
-    </select>
-</div>
 <!-- Version 7 is the latest version of D3. -->
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <!-- I am using this Topojson library though my JSON is a GEOJSON I believe. -->
 <script src="https://unpkg.com/topojson@3"></script>
-<!-- Our visualization data will be in this '.js' file -->
-<script src="main_viz.js"></script>
+
+<h1>Greek Polis Data</h1>
+<!--<p>This map does not directly focus on staseis (conflict). However, there may be a relation between the level of Greek influence in a city (Hellenicity), the level of Democracy in a city, and conflict between cities based on the relation of these two variables.</p>-->
+<h2>Hypothesis: There is a direct correlation between whether a city is a Democracy and whether it is Greek. -- If a city is known to be of Greek culture and influence, it is almost certainly a democratically run polis.</h2>
+<p>Based on the polis data (see reference at bottom) it seems there is a direct relationship between the likelihood of a city being a democracy and it's Hellenicity. -- Except for one city of mixed Hellenicity and other cultures and a city of uncertain influence, all known democratic cities were Greek.</p>
+
+<div class="mapWrapper">
+
+    <div id="map">
+        <!-- Our visualization data will be in this '.js' file -->
+        <script src="main_viz.js"></script>
+    </div>
+
+    <select id="selectCategory">
+    </select>
+</div>
+<p><b>References:</b></p>
+<p>Arcenas, S.L. (unknown date). "polis data_distributed 21.08.25.xlsx"</p>
+<p>Arcenas, S.L. (unknown date). "staseis data_time.xlsx"</p>
+<p>Arcenas, S.L. (unknown date). "Codebook.docx"</p>
 </body>
 </html>

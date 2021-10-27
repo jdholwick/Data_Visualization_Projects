@@ -1,13 +1,21 @@
 html, body {
+    font-family: "Times New Roman";
     height: 100%;
     background-color: #FFFDE7;
 }
 
 h1  {
     color: #993333;
-    font-size: 2em;
+    font-size: 1.75em;
     text-align: left;
     text-decoration: underline;
+}
+
+h2  {
+    color: #993333;
+    font-size: 1.1em;
+    text-align: left;
+    text-decoration: none;
 }
 
 .mapWrapper {
@@ -22,7 +30,7 @@ h1  {
     width: 100%;
 }
 
-#selectTest {
+#selectCategory {
     position: absolute;
     right: 15px;
     top: 15px;
@@ -33,20 +41,6 @@ h1  {
     right: 15px;
     top: 15px;
     z-index: 20000;
-}
-
-#textbox {
-    position: absolute;
-    top: 400px;
-    left: 50px;
-    width: 275px;
-    height: 100px;
-}
-
-#textbox text p {
-    font-family: Arial, Helvetica;
-    font-size: .8em;
-    margin: 0;
 }
 
 path {

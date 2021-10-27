@@ -24,8 +24,8 @@ const borderPath = svgMap.append("rect")
     .attr("y", -75)
     .attr("height", height + margin.top + margin.bottom)
     .attr("width", width + margin.left + margin.right)
-    .style("stroke", "black")
-    .style("fill", "#AED6F1") // Essentially gives our oceans color
+    .style("stroke", "#566573")
+    .style("fill", "#AED6F1") // essentially gives our oceans color
     .style("stroke-width", 4);
 
 const mapPath = d3.geoPath()
@@ -42,7 +42,7 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
         .enter().append("path")
         .attr("d", mapPath) // grabs the 'map_path' constiable i made and filled with 'geoPath' and then displays our map in the browser
         .attr("fill", "none") // no color so that there is no interference with my '.county' layer
-        .attr("stroke", "#566573")
+        .attr("stroke", "#566573") // subtle border color for countries
         .attr("stroke-width", "1.9");
 
     // load and display the cities
@@ -70,119 +70,106 @@ d3.json("data/world-50m.json").then(function(worldTopo) {
             })
 
             .attr("r", 3.5)
-            .style("fill", (d) => colorScale(d.Walls))//"#F44336")
+            .style("fill", (d) => colorScale(d.Democracy))//"#F44336")
             .attr("opacity", "0.85") // makes each dot slightly opaque
             .append("title")
-            .text((d) => "City Name: " + d.Name + "\nDemocracy: " + d.Democracy) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
-
-/*
-        //dma.objects.nielsen_dma.geometries = nielsen;
-
-        g.append("g")
-            .attr("id", "polis#")
-            .selectAll("path")
-            .data(topojson.feature(worldTopo, worldTopo.objects.countries))
-            .enter()
-            .append("path")
-            .attr("d", path)
-            //.on("click", clicked)
-
-            .on("mouseover", function(d) {
-                //d3.select(this)
-                //    .attr("fill", "orange")
-
-                //var prop = d.properties;
-
-                var string = "City Name:"// " + d.Name + "</p>";
-                /!*string += "<p><strong>Homes with TVs</strong>: " + numberWithCommas(prop["TV Homes"]) + "</p>";
-                string += "<p><strong>% with Cable</strong>: " + prop.cableperc + "%</p>";
-                string += "<p><strong>Nielsen Rank</strong>: " + prop.Rank + "</p>";
-*!/
-                d3.select("#textbox")
-                    .html("")
-                    .append("text")
-                    .html(string)
-            })
-*/
+            .text((d) => "City Name: " + d.Name + "\nDemocracy: " + d.Democracy + "\nHellenicity: " + d.Hellenicity) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
 
         // add the options to the button
-        var allGroup = ["Name", "Hellenicity", "Walls"]
+        var selectCategories = ["Level of Democracy", "Level of Hellenicity"]
 
-        d3.select("#selectTest")
+        d3.select("#selectCategory")
             .selectAll("myOptions")
-            .data(allGroup)
+            .data(selectCategories)
             .enter()
             .append("option")
             .text(function (d) { return d; }) // text showed in the menu
             .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-        // A function that update the chart
-        function update(selectedGroup) {
+        // used to update the map based on the selection from pulldown, 'selectCategory'
+        function mapUpdate(selectedGroup) {
 
-            // Create new data with the selection?
-            //var dataFilter = polisData.map(function(d){return {value:d[selectedGroup]} })
+            if (selectedGroup == "Level of Democracy") {
+                // Create new data with the selection?
+                //var dataFilter = polisData.map(function(d){return {value:d[selectedGroup]} })
 
-            g.selectAll("city-marks")
-                .data(polisData)
-                .enter()
-                .append("a")
-                .append("circle")
+                g.selectAll("city-marks")
+                    .data(polisData)
+                    .enter()
+                    .append("a")
+                    .append("circle")
 
-                // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
-                .attr("cx", function(d) {
-                    if (d.area_1 >= 2.5){
-                        return projection([d.Longitude, d.Latitude])[0]; // Returns only x coord
-                    }
-                })
-                .attr("cy", function(d) {
-                    if (d.area_1 >= 2.5){
-                        //console.log(d.Latitude) // There is a green dot with no city name that is unaccounted for. It does not seem to be listed in the console data because it would have to be lat 45 or 46 and the four that fit that are cities.
-                        return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
-                    }
-                })
+                    // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
+                    .attr("cx", function (d) {
+                        if (d.area_1 >= 2.5) {
+                            return projection([d.Longitude, d.Latitude])[0]; // Returns only x coord
+                        }
+                    })
+                    .attr("cy", function (d) {
+                        if (d.area_1 >= 2.5) {
+                            //console.log(d.Latitude) // There is a green dot with no city name that is unaccounted for. It does not seem to be listed in the console data because it would have to be lat 45 or 46 and the four that fit that are cities.
+                            return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
+                        }
+                    })
 
-                .attr("r", 3.5)
-                .style("fill", (d) => colorScale(d.Hellenicity))//"#F44336")
-                .attr("opacity", "0.85") // makes each dot slightly opaque
-                .append("title")
-                .text((d) => d.Name) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
+                    .attr("r", 3.5)
+                    .style("fill", (d) => colorScale(d.Democracy))//"#F44336")
+                    .attr("opacity", "0.85") // makes each dot slightly opaque
+                    .append("title")
+                    .text((d) => "City Name: " + d.Name + "\nDemocracy: " + d.Democracy + "\nHellenicity: " + d.Hellenicity) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
 
-            // Create new data with the selection?
-            //var dataFilter = polisData.map(function(d) {return {value:d[selectedGroup]} })
-        }
-
-        // When the button is changed, run the updateChart function
-        d3.select("#selectTest").on("change", function(d) {
-            // recover the option that has been chosen
-            var selectedOption = d3.select(this).property("value")
-            // run the updateChart function with this selected option
-            update(selectedOption)
-        })
-
-        /*        var currentKey
-                d3.select("#selectColorData").on("change", function(d) {
-                    currentKey = d3.select(this).property("value");
-                    console.log(currentKey)
-                })
-        */
-/*            var polisCategories = {}
-
-            for ( var x = 0; x < polisData.columnCount; x++) {
-                polisCategories[x] = polisData.columns[x]
+                    // the following resets the zoom based on the option selected from 'selectCategory' pulldown
+                    g.selectAll('path')
+                        .attr('transform', d3.transform);
+                    g.selectAll("circle")
+                        .attr('transform', d3.transform);
+                    g.selectAll("text")
+                        .attr('transform', d3.transform);
             }
 
-            console.log(polisCategories)//polisData.columns)
-*/
-//        var dropdownOptions =
-        // The following is not yet functional, doing nothing apparent with an empty drop-down but it does not crash the plot
-        /*g.select("#selectWalls")
-            .selectAll("theOptions")
-            .data(optionsWalls)
-            .enter()
-            .append("option")
-            .text(function (d) { return d; }) // This will be the text shown in the drop-down
-            .attr("value", function (d) { return d; }) // This will be the value returned by selection from drop-down
-        */
+            if (selectedGroup == "Level of Hellenicity") {
+
+                g.selectAll("city-marks")
+                    .data(polisData)
+                    .enter()
+                    .append("a")
+                    .append("circle")
+
+                    // the lat and long must be converted to x and y coordinates (as was discussed in lecture -- turns out this is true)
+                    .attr("cx", function (d) {
+                        if (d.area_1 >= 2.5) {
+                            return projection([d.Longitude, d.Latitude])[0]; // Returns only x coord
+                        }
+                    })
+                    .attr("cy", function (d) {
+                        if (d.area_1 >= 2.5) {
+                            //console.log(d.Latitude) // There is a green dot with no city name that is unaccounted for. It does not seem to be listed in the console data because it would have to be lat 45 or 46 and the four that fit that are cities.
+                            return projection([d.Longitude, d.Latitude])[1]; // returns only y coord
+                        }
+                    })
+
+                    .attr("r", 3.5)
+                    .style("fill", (d) => colorScale(d.Hellenicity))//"#F44336")
+                    .attr("opacity", "0.85") // makes each dot slightly opaque
+                    .append("title")
+                    .text((d) => "City Name: " + d.Name + "\nDemocracy: " + d.Democracy + "\nHellenicity: " + d.Hellenicity) // Pulls city name of corresponding coordinates. JS Note: () => {} is a fast way of creating a function and the part after the arrows is the return.
+
+                    // the following resets the zoom based on the option selected from 'selectCategory' pulldown
+                    g.selectAll('path')
+                        .attr('transform', d3.transform);
+                    g.selectAll("circle")
+                        .attr('transform', d3.transform);
+                    g.selectAll("text")
+                        .attr('transform', d3.transform);
+            }
+
+        }
+
+        // when the pulldown is selected 'mapUpdate()' is called to change the coloring of the cities
+        d3.select("#selectCategory").on("change", function(d) {
+            var selectedOption = d3.select(this).property("value") // selected option is stored to be passed to 'mapUpdate()'
+            mapUpdate(selectedOption)
+        })
 
     });
 });
