@@ -1,0 +1,52 @@
+html, body {
+    font-family: "Times New Roman";
+    height: 100%;
+    background-color: #FAFAFA;
+}
+
+h1  {
+    color: #993333;
+    font-size: 1.75em;
+    text-align: left;
+    text-decoration: underline;
+}
+
+h2  {
+    color: #993333;
+    font-size: 1.1em;
+    text-align: left;
+    text-decoration: none;
+}
+
+.mapWrapper {
+    position: relative;
+    height: 100%;
+    width: 1325px;
+}
+
+#map {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#selectCategory {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.selectColorData {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 20000;
+}
+
+path {
+    fill: #FAD7A0;
+}
+
+path:hover {
+    fill: #F5B041;
+}
