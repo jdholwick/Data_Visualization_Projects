@@ -41,8 +41,8 @@
 
 
     // For the D3 'scaleOrdinal()' function it doesn't matter what the data is... it's just counting the number of elements.
-    const circleData = [1,2,3,4,5,6,7,8,9,10]
-    const lineData = [1,2,3,4,5,6,7,8,9]
+    const circleData = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    const lineData = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
     const circleColors = d3.scaleOrdinal().domain(circleData).range(d3.schemeSet3);
     const lineColors = d3.scaleOrdinal().domain(lineData).range(d3.schemeSet3);
