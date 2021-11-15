@@ -1,6 +1,6 @@
-(function (d3)
-{
-    'use strict';
+// (function (d3)
+// {
+//     'use strict';
 
     const svg = d3.select('#networkCont');
 
@@ -9,7 +9,13 @@
     const centX = width/2;
     const centY = height/2;
 
-    const testNodes = [
+    import {testDataPoint} from "./data/data.js"; // Import apparently DOES need to know the file extension of '.js'
+
+    import {testNodes, testLinks} from "./data/data.js";
+
+    console.log(testDataPoint, testNodes, testLinks);
+
+    /*const testNodes = [
         {"id": "Java"},
         {"id": "Python"},
         {"id": "COBOL"},
@@ -32,17 +38,17 @@
         {"source": 4, "target": 6},
         {"source": 6, "target": 7},
         {"source": 6, "target": 8}
-    ];
+    ];*/
 
     const testSim = d3.forceSimulation(testNodes)
-        .force("charge", d3.forceManyBody())
+        .force("charge", d3.forceManyBody().strength(-400))
         .force("link", d3.forceLink(testLinks))
         .force("center", d3.forceCenter(centX, centY));
 
 
     // For the D3 'scaleOrdinal()' function it doesn't matter what the data is... it's just counting the number of elements.
-    const circleData = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-    const lineData = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    const circleData = [1,2,3]//,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    const lineData = [1,2,3]//,4,5,6,7,8,9,10,11,12,13,14,15]
 
     const circleColors = d3.scaleOrdinal().domain(circleData).range(d3.schemeSet3);
     const lineColors = d3.scaleOrdinal().domain(lineData).range(d3.schemeSet3);
@@ -53,21 +59,23 @@
         .enter()
         .append('circle')
         .attr('r', 12)
-        .attr('fill', function(d){return circleColors(d) });
+        .attr('fill', '#ee9b00');//function(d){return circleColors(d) });
 
     const textNodes = svg
         .selectAll('text')
         .data(testNodes)
         .enter()
         .append('text')
-        .text(d => d.id);
+        .attr('text-anchor', 'middle') // Puts text on middle of nodes
+        .attr('alignment-baseline', 'middle')
+        .text(d => d.name);
 
     const lineLinks = svg
         .selectAll('line')
         .data(testLinks)
         .enter()
         .append('line')
-        .attr('stroke', function(d){return lineColors(d) });
+        .attr('stroke', '#0a9396');//function(d){return lineColors(d) });
 
     testSim.on('tick', () => {
         circleNodes
@@ -84,4 +92,4 @@
         console.log('tick');
     });
 
-}(d3));
+// }(d3));
