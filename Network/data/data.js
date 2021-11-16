@@ -1,8 +1,8 @@
 // File is converted from https://github.com/evelinag/star-wars-network-data/blob/master/starwars-episode-4-interactions-allCharacters.json with no loss of information.
 
-export const testDataPoint = 'something';
+//export const testDataPoint = 'something';
 
-export const testNodes = [
+export const charNodes = [
     {
         "name": "R2-D2",
         "value": 40,
@@ -115,7 +115,7 @@ export const testNodes = [
     }
 ]
 
-export const testLinks = [
+export const charNodeLinks = [
     {
         "source": 1,
         "target": 0,
