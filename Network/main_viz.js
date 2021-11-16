@@ -28,6 +28,7 @@ const circleNodes = svg
     .enter()
     .append('circle')
     .attr('r', (d) => (d.value)/1.2)//12)
+    .attr('stroke', '#000000')
     .attr('fill', (d) => d.colour);//'#ee9b00');//function(d){return circleColors(d) });
 
 const lineLinks = svg
@@ -36,7 +37,7 @@ const lineLinks = svg
     .enter()
     .append('line')
     .attr('stroke-width', 2)
-    .attr('stroke', '#e9ecef');//function(d){return lineColors(d) });
+    .attr('stroke', '#6a040f');//function(d){return lineColors(d) });
 
 const textNodes = svg
     .selectAll('text')
@@ -45,11 +46,11 @@ const textNodes = svg
     .append('text')
     .attr('text-anchor', 'middle') // Puts text on middle of nodes
     .attr('alignment-baseline', 'middle')
-    .attr('fill', '#f4f1de')//'#1d3557')
+    .attr('fill', '#1d3557')
     .attr('stroke-width', .65)
     .attr('font-size', 30)
     .attr('font-weight', 'bold')
-    .attr('stroke', '#335c67')
+    .attr('stroke', '#ffffff')
     .text(d => d.name);
 testSim.on('tick', () => {
     circleNodes
