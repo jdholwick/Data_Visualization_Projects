@@ -27,7 +27,7 @@ const circleNodes = svg
     .data(testNodes)
     .enter()
     .append('circle')
-    .attr('r', 12)
+    .attr('r', (d) => d.value)//12)
     .attr('fill', '#ee9b00');//function(d){return circleColors(d) });
 
 const textNodes = svg
