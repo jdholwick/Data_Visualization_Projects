@@ -1,6 +1,9 @@
 const svg = d3.select('#networkCont');
+
+// As a reminder the '+' is simply there to ensure casting to an int.
 const width = +svg.attr('width');
 const height = +svg.attr('height');
+
 const centX = width/2;
 const centY = height/2;
 
@@ -27,11 +30,7 @@ const edgeLines = svg
     .enter()
     .append('line')
     .attr('stroke-width', 2)
-    /*.attr('stroke', function(d) {
-        if (d.value >= 2) {return "#F59432"}
-        else {return "#95765D"}
-    });*/
-    .attr('stroke', '#83B8CD');//function(d){return lineColors(d) });
+    .attr('stroke', '#83B8CD');
 
 const nodeCircles = svg
     .selectAll('circle')
@@ -59,7 +58,6 @@ const nodeText = svg
     .attr('font-size', 30)
     .attr('font-weight', 'bold')
     .attr('pointer-events', 'none') // Using this ensures that '.append('title')' over circles is not impeded by the text.
-    //.attr('stroke', '#ffffff')
     .text(d => d.name);
 
 strwrsCharSim.on('tick', () => {
@@ -67,7 +65,7 @@ strwrsCharSim.on('tick', () => {
         .attr('cx', d => d.x)
         .attr('cy', d => d.y)
         .append('title')
-        .text((d) => d.name + " Character Interactions: " + d.value)
+        .text((d) => "Number of scenes " + d.name + " appeared in: " + d.value)
 
     edgeLines
         .attr('x1', d => d.source.x)
@@ -75,13 +73,10 @@ strwrsCharSim.on('tick', () => {
         .attr('x2', d => d.target.x)
         .attr('y2', d => d.target.y)
         .append('title')
-        .text((d) => 'Edge Value: ' + d.value) // TESTING: Just keep this for testing purposes.
+        .text((d) => 'Number of scenes two appeared in: ' + d.value) // TESTING: Just keep this for testing purposes.
 
     nodeText
         .attr('x', d => d.x)
         .attr('y', d => d.y)
-        //.append('title')
-        //.text((d) => d.name + " Character Interactions: " + d.value)
-
 });
 
