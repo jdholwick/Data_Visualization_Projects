@@ -45,11 +45,11 @@ const textNodes = svg
     .append('text')
     .attr('text-anchor', 'middle') // Puts text on middle of nodes
     .attr('alignment-baseline', 'middle')
-    .attr('fill', '#ffe6a7')//'#1d3557')
-    .attr('stroke-width', .35)
+    .attr('fill', '#f4f1de')//'#1d3557')
+    .attr('stroke-width', .65)
     .attr('font-size', 30)
     .attr('font-weight', 'bold')
-    .attr('stroke', '#03071e')
+    .attr('stroke', '#335c67')
     .text(d => d.name);
 testSim.on('tick', () => {
     circleNodes
