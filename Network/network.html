@@ -12,14 +12,21 @@
 <!-- Version 7 is the latest version of D3. -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
-<p>One might think that the Star Wars film's characters' popularities and familiarities with the public are proportional to the overall number of interactions with other characters in the movie. In other words, the more interactions a character has with others, the more intertwined into the movie's plot that character should be, one could surmise. Therefore, the more interactions a character has one could also suppose that character would have a similar awareness with the culture that is familiar with the film because the character with more interactions should have a larger significance. Judging by the data though, this reasoning does not seem to hold up. I do not have data on how popular or well known certain characters are but anecdotally, the off the cuff hypothesis does not seem to be correct. Some characters that seem almost incidental (e.g., Biggs or Beru) have a surprising number of interactions. <b>Thus, my hypothesis would be as follows: Interactions with other mid to main characters has a poor connection with how well or unwell known a character is in the culture.</b></p>
-<!--<div class="mapWrapper">-->
+<!--<p>One might think that the Star Wars film's characters' popularities and familiarities with the public are proportional to the overall number of interactions with other characters in the movie. In other words, the more interactions a character has with others, the more intertwined into the movie's plot that character should be, one could surmise. Therefore, the more interactions a character has one could also suppose that character would have a similar awareness with the culture that is familiar with the film because the character with more interactions should have a larger significance. Judging by the data though, this reasoning does not seem to hold up. I do not have data on how popular or well known certain characters are but anecdotally, the off the cuff hypothesis does not seem to be correct. Some characters that seem almost incidental (e.g., Biggs or Beru) have a surprising number of interactions. <b>Thus, my hypothesis would be as follows: Interactions with other mid to main characters has a poor connection with how well or unwell known a character is in the culture.</b></p>-->
+<div class="row">
 
-    <svg id="networkCont" width="1450" height="800"></svg>
+    <div class="col">
+        <svg id="networkCont" width="950" height="900"></svg>
 
-    <!-- Our visualization data will be in this '.js' file -->
-    <script type="module" src="main_viz.js"></script>
-
-<!--</div>-->
+        <!-- Our visualization data will be in this '.js' file -->
+        <script type="module" src="main_viz.js"></script>
+    </div>
+    <div class="col">
+        <h1>Star Wars Ep. IV Character Interactions Vs. Cultural Awareness</h1>
+        <p>One might think that the Star Wars film's characters' popularities and familiarities with the public are proportional to the overall number of interactions with other characters in the movie. In other words, the more interactions a character has with others, the more intertwined into the movie's plot that character should be, one could surmise. Therefore, the more interactions a character has one could also suppose that character would have a similar awareness with the culture that is familiar with the film because the character with more interactions should have a larger significance. Judging by the data though, this reasoning does not seem to hold up. I do not have data on how popular or well known certain characters are but anecdotally, the off the cuff hypothesis does not seem to be correct. Some characters that seem almost incidental (e.g., Biggs or Beru) have a surprising number of interactions. <b>Thus, my hypothesis would be as follows: Interactions with other mid to main characters has a poor connection with how well or unwell known a character is in the culture.</b></p>
+        <br><br><br><br><br>
+        <a href="network_map.html">Go to the Interactive Network Map on Page Solo...</a>
+    </div>
+</div>
 </body>
 </html>

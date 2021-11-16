@@ -7,7 +7,7 @@ const centY = height/2;
 import {charNodes, charNodeEdges} from "./data/data.js"; // Import apparently DOES need to know the file extension of '.js'
 
 const strwrsCharSim = d3.forceSimulation(charNodes)
-    .force("charge", d3.forceManyBody().strength(-1500))
+    .force("charge", d3.forceManyBody().strength(-1200))
     .force("link", d3.forceLink(charNodeEdges))//.distance(10))
     .force("center", d3.forceCenter(centX, centY));
 
@@ -38,7 +38,7 @@ const nodeCircles = svg
     .data(charNodes)
     .enter()
     .append('circle')
-    .attr('r', (d) => (d.value)/1.2)//12)
+    .attr('r', (d) => (d.value)/1.2)
     .attr('stroke', '#000000')
     .attr('fill', function(d) {
         if (d.colour != "#808080") {return "#F59432"}
