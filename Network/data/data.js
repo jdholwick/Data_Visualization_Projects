@@ -115,7 +115,7 @@ export const charNodes = [
     }
 ]
 
-export const charNodeLinks = [
+export const charNodeEdges = [
     {
         "source": 1,
         "target": 0,
