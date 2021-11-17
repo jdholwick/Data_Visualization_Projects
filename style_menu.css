@@ -1,25 +1,25 @@
 html, body {
-    font-family: "Courier New";
+    font-family: "courier";
     background-color: #1C2833;
 }
 
 h1  {
-    color: #CCFF33;
+    color: #D3FBD8;
     font-size: 1.9em;
     text-align: left;
     text-decoration: underline;
 }
 
 ul {
-    color: #CCFF33;
+    color: #D3FBD8;
     font-size: 1.2em;
     list-style-type: circle;
 }
 
 a {
-    color: #CCFF33;
+    color: #D3FBD8;
 }
 
 a:focus {
-    color: #FF5722;
+    color: #00C6B4;
 }
