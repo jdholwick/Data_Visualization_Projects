@@ -50,14 +50,6 @@ h2  {
     z-index: 20000;
 }
 
-path {
-    fill: #FAD7A0;
-}
-
-path:hover {
-    fill: #F5B041;
-}
-
 .row {
     display: flex; /* Each has equal height this way. */
 }
@@ -66,4 +58,9 @@ path:hover {
     flex: 1; /* Each has equal width this way. */
     padding: 1em;
     border: none;
+}
+
+line:hover {
+    stroke: #f95738;
+    stroke-width: 6.0;
 }

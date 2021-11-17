@@ -7,7 +7,7 @@ const height = +svg.attr('height');
 const centX = width/2;
 const centY = height/2;
 
-import {charNodes, charNodeEdges} from "./data/data.js"; // Import apparently DOES need to know the file extension of '.js'
+import {charNodes, charNodeEdges} from "./data/network_data.js"; // Import apparently DOES need to know the file extension of '.js'
 
 const strwrsCharSim = d3.forceSimulation(charNodes)
     .force("charge", d3.forceManyBody().strength(-1100))
@@ -21,7 +21,6 @@ const dragFeature = d3.drag().on('drag', (event, node) => {
 
     strwrsCharSim.alpha = 1;
     strwrsCharSim.restart();
-
 });
 
 const edgeLines = svg
