@@ -29,7 +29,7 @@ const edgeLines = svg
     .data(charNodeEdges)
     .enter()
     .append('line')
-    .attr('stroke-width', 2)
+    .attr('stroke-width', 2.0)
     .attr('stroke', '#83B8CD');
 
 const nodeCircles = svg
@@ -60,12 +60,12 @@ const nodeText = svg
     .attr('pointer-events', 'none') // Using this ensures that '.append('title')' over circles is not impeded by the text.
     .text(d => d.name);
 
-strwrsCharSim.on('tick', () => {
+strwrsCharSim.on('tick', () => { // The parameter 'tick' is commanding what happens when something in the viz changes.
     nodeCircles
         .attr('cx', d => d.x)
         .attr('cy', d => d.y)
         .append('title')
-        .text((d) => "Number of scenes " + d.name + " appeared in: " + d.value)
+        .text(d => "Number of scenes " + d.name + " appeared in: " + d.value)
 
     edgeLines
         .attr('x1', d => d.source.x)
@@ -73,7 +73,7 @@ strwrsCharSim.on('tick', () => {
         .attr('x2', d => d.target.x)
         .attr('y2', d => d.target.y)
         .append('title')
-        .text((d) => 'Number of scenes two appeared in: ' + d.value) // TESTING: Just keep this for testing purposes.
+        .text(d => 'Number of scenes the two appeared in: ' + d.value)
 
     nodeText
         .attr('x', d => d.x)
